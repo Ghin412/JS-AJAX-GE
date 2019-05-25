@@ -83,11 +83,9 @@ $(document).ready(() => {
             console.log(data.fruits.length);
             for (let i = 0; i < data.fruits.length; i++) {
                 console.log(i);
-                $('#newTable').append('<tr>');
-                $('#newTable tr:last').after('<td>' + i + '</td>');
+                $('#newTable tr:last').after('<tr><td>' + i + '</td>');
                 $('#newTable td:last').after('<td>' + data.fruits[i].name + '</td>');
-                $('#newTable td:last').after('<td>' + data.fruits[i].image + '</td>');
-                $('#newTable td:last').after('</tr>');
+                $('#newTable td:last').after('<td>' + data.fruits[i].image + '</td></tr>');
             }
             $('#newTable tr:last').after('</table>')
             console.log($('#jqJSONLoader'));
