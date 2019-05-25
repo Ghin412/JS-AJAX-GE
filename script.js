@@ -53,15 +53,20 @@ function loadJSON() {
         if (req.readyState == 4 && req.status == 200) {
             document.getElementById('JSONLoader').innerHTML = req.responseText;
             responseObject = JSON.parse(req.responseText);
-            let html = "<table class='table'>";
-            html += "<tr><th scope='col'> # </th>" +
-                "<th scope='col'> Name </th>" +
-                "<th scope='col'> Price </th>";
-
+            let html = `
+                <table class='table'>
+                    <tr><th scope='col'> # </th> 
+                    <th scope='col'> Name </th>
+                    <th scope='col'> Price </th>
+                `
             for (let i = 0; i < responseObject["fruits"].length; i++) {
-                html += "<tr><th scope='row'>" + i + "</th>" +
-                    "<td scope='col'>" + responseObject.fruits[i].name + "</td>" +
-                    "<td>" + responseObject.fruits[i].price + "</td><tr>"
+                html += `
+                    <tr>
+                        <th scope='row'> ${i} </th> 
+                        <td scope='col'> ${responseObject.fruits[i].name} </td> 
+                        <td> ${responseObject.fruits[i].price} </td>
+                    <tr>
+                    `
             }
             html += "</table>";
             document.getElementById('JSONLoader').innerHTML = html;
@@ -80,15 +85,44 @@ $(document).ready(() => {
             '<th scope="col"> # </th>' +
             '<th scope="col"> Name </th>' +
             '<th scope="col"> Image </th></tr>')
-            console.log(data.fruits.length);
+
             for (let i = 0; i < data.fruits.length; i++) {
-                console.log(i);
                 $('#newTable tr:last').after('<tr><td>' + i + '</td>');
                 $('#newTable td:last').after('<td>' + data.fruits[i].name + '</td>');
                 $('#newTable td:last').after('<td>' + data.fruits[i].image + '</td></tr>');
             }
             $('#newTable tr:last').after('</table>')
+
             console.log($('#jqJSONLoader'));
         });
     });
 });
+
+//AJAX load JSON using fetch
+
+function loadJSONFetch() {
+    fetch('loadJSON.json')
+    .then((res) => res.json())
+    .then((data) => {
+        let output = `
+            <table class="table"><tr>
+                <th scope="col"> # </th>
+                <th scope="col"> Name </th>
+                <th scope="col"> Price </th> 
+                <th scope="col"> Image </th></tr>
+        `
+        console.log(data.fruits.length);
+        for(let i = 0; i < data.fruits.length; i++) {
+            output += `
+                <tr>
+                    <th scope="row"> ${i} </td>
+                    <td> ${data.fruits[i].name} </td>
+                    <td> ${data.fruits[i].price} </td>
+                    <td> ${data.fruits[i].image} </td>
+                </tr>
+            `
+        }
+        document.getElementById('JSONFetch').innerHTML = output;
+    })
+    .catch((err) => console.log(err));
+};
