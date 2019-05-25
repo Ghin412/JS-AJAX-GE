@@ -1,0 +1,49 @@
+{
+  "fruits": [
+    {
+      "name": "Apple",
+      "image": "https://bit.ly/2Ex2IrP",
+      "price": 35
+    },
+    {
+      "name": "Banana",
+      "image": "https://bit.ly/2HTJoGk",
+      "price": 12
+    },
+    {
+      "name": "Grapes",
+      "image": "https://bit.ly/2W0YELq",
+      "price": 45
+    },
+    {
+      "name": "Pineapple",
+      "image": "https://bit.ly/2VLF4hf",
+      "price": 200
+    },
+    {
+      "name": "Orange",
+      "image": "https://bit.ly/2QoQ9U4",
+      "price": 350
+    },
+    {
+      "name": "Strawberry",
+      "image": "https://bit.ly/2EyrMip",
+      "price": 35
+    },
+    {
+      "name": "Grapes",
+      "image": "https://bit.ly/2W467sS",
+      "price": 35
+    },
+    {
+      "name": "Cherry",
+      "image": "https://bit.ly/2JDagO7",
+      "price": 35
+    },
+    {
+      "name": "Avocado",
+      "image": "https://bit.ly/2KbROvx",
+      "price": 35
+    }
+  ]
+}

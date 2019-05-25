@@ -34,23 +34,44 @@
         </div>
     </header>
     <main class="row mx-5 my-5 px-4 py-4">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 text-center">
             <h3> Load text using JavaScript </h3>
-            <button id="buttonLoadOne" type="button" class="btn btn-primary btn-lg mx-auto my-3"
-                onclick="loadText()">Click me</button>
-            <div id="textLoader" class="container">dasdas</div>
+            <button id="buttonLoadOne" type="button" class="btn btn-primary btn-lg mx-auto my-3"">Load</button>
+            <div id="textLoader" class="container"></div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 text-center">
             <h3> Load text using jQuery </h3>
-            <button id="buttonLoadTwo" type="button" class="btn btn-success btn-lg mx-auto my-3">Click me</button>
-            <div id="imageLoader" class="container">asdsdsad</div>
+            <button id="buttonLoadTwo" type="button" class="btn btn-success btn-lg mx-auto my-3">Load</button>
+            <div id="jQLoader" class="container"></div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
-            <h3> Some text </h3>
-            <button id="buttonLoadThree" type="button" class="btn btn-danger btn-lg mx-auto my-3">Click me</button>
-            <div class="container">asdsadasd</div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 text-center">
+            <h3> Load text using Fetch API </h3>
+            <button id="buttonLoadThree" type="button" class="btn btn-danger btn-lg mx-auto my-3"">Load</button>
+            <div id="fetchOutput" class="container"></div>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 text-center">
+            <h3> Load JSON using JavaScript </h3>
+            <button id="buttonLoadFour" type="button" class="btn btn-secondary btn-lg mx-auto my-3">Load</button>
+            <div id="JSONLoader" class="container"></div>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 text-center">
+            <h3> Load JSON using jQuery </h3>
+            <button id="buttonLoadFive" type="button" class="btn btn-warging btn-lg mx-auto my-3">Load</button>
+            <div id="jqJSONLoader" class="container"></div>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 text-center">
+            <h3> Load JSON using Fetch API </h3>
+            <button id="buttonLoadSix" type="button" class="btn btn-info btn-lg mx-auto my-3"">Load</button>
+            <div id="" class="container">
+        </div>
         </div>
     </main>
+
+    <script>
+        document.getElementById('buttonLoadOne').addEventListener('click', loadText)
+        document.getElementById('buttonLoadThree').addEventListener('click', loadTextFetch);
+        document.getElementById('buttonLoadFour').addEventListener('click', loadJSON);
+    </script>
 </body>
 
 </html>
