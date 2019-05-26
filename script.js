@@ -1,15 +1,19 @@
 // AJAX load text using JavaScript
 function loadText() {
+    //XMLHttpRequest object
     let req = new XMLHttpRequest();
 
+    //Loading "Getting" a file from server, in this example just local file
     req.open("GET", "loadJS.txt", true);
 
+    //Ckecking state and status
     req.onreadystatechange = () => {
         if (req.readyState == 4 && req.status == 200) {
+            //Process response
             document.getElementById('textLoader').innerHTML = req.responseText;
         }
     };
-
+    //Sending request to the server
     req.send();
 }
 
@@ -81,6 +85,7 @@ function loadJSON() {
 $(document).ready(() => {
     $("#buttonLoadFive").click(function (event) {
         $.getJSON('loadJSON.json', function (data) {
+            //Old way, table making error can occur
             /*$('#jqJSONLoader').html('<table id="newTable" class="table"><tr>' +
             '<th scope="col"> # </th>' +
             '<th scope="col"> Name </th>' +
@@ -95,6 +100,7 @@ $(document).ready(() => {
 
             console.log($('#jqJSONLoader'));*/
 
+            //New and better way, with chances of table making error occurring are slim to none
             let defaultColumns = ["#", "Name", "Image"];
             let rows = [];
             let $container = $("#jqJSONLoader");
