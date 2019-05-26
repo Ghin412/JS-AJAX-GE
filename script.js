@@ -81,7 +81,7 @@ function loadJSON() {
 $(document).ready(() => {
     $("#buttonLoadFive").click(function (event) {
         $.getJSON('loadJSON.json', function (data) {
-            $('#jqJSONLoader').html('<table id="newTable" class="table"><tr>' +
+            /*$('#jqJSONLoader').html('<table id="newTable" class="table"><tr>' +
             '<th scope="col"> # </th>' +
             '<th scope="col"> Name </th>' +
             '<th scope="col"> Image </th></tr>')
@@ -93,7 +93,37 @@ $(document).ready(() => {
             }
             $('#newTable tr:last').after('</table>')
 
-            console.log($('#jqJSONLoader'));
+            console.log($('#jqJSONLoader'));*/
+
+            let defaultColumns = ["#", "Name", "Image"];
+            let rows = [];
+            let $container = $("#jqJSONLoader");
+            let $table = $("<table />", {
+                id: "newTable",
+                class: "table"
+            });
+            let $header = $("<tr />");
+            let columns = $.map(defaultColumns, function (col) {
+                let $th = $("<th />", {
+                    scope: "col"
+                });
+                $th.html(col);
+                return $th;
+            });
+
+            for (let i = 0, length = data.fruits.length; i < length; i++) {
+                let $tr = $("<tr />");
+                $tr.append([
+                    $("<td />").text(i),
+                    $("<td />").text(data.fruits[i].name),
+                    $("<td />").text(data.fruits[i].image)
+                ]);
+                rows.push($tr);
+            }
+
+            $header.append(columns);
+            $table.append(columns, rows);
+            $container.append($table);
         });
     });
 });
@@ -102,18 +132,18 @@ $(document).ready(() => {
 
 function loadJSONFetch() {
     fetch('loadJSON.json')
-    .then((res) => res.json())
-    .then((data) => {
-        let output = `
+        .then((res) => res.json())
+        .then((data) => {
+            let output = `
             <table class="table"><tr>
                 <th scope="col"> # </th>
                 <th scope="col"> Name </th>
                 <th scope="col"> Price </th> 
                 <th scope="col"> Image </th></tr>
         `
-        console.log(data.fruits.length);
-        for(let i = 0; i < data.fruits.length; i++) {
-            output += `
+            console.log(data.fruits.length);
+            for (let i = 0; i < data.fruits.length; i++) {
+                output += `
                 <tr>
                     <th scope="row"> ${i} </td>
                     <td> ${data.fruits[i].name} </td>
@@ -121,8 +151,8 @@ function loadJSONFetch() {
                     <td> ${data.fruits[i].image} </td>
                 </tr>
             `
-        }
-        document.getElementById('JSONFetch').innerHTML = output;
-    })
-    .catch((err) => console.log(err));
+            }
+            document.getElementById('JSONFetch').innerHTML = output;
+        })
+        .catch((err) => console.log(err));
 };
